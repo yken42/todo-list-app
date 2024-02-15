@@ -110,3 +110,11 @@ a {
 .filters a {
   padding: 0 10px;
 }
+
+.delete-btn {
+  color: white;
+}
+
+.delete-btn:hover{
+  cursor: pointer;
+}
