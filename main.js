@@ -43,5 +43,4 @@ function removeTask(e) {
     const item = e.target.closest("li");
     item.remove();
   }
-  // console.log("HELO");
 }

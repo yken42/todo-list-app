@@ -9,10 +9,11 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
+.wrapper {
   background: linear-gradient(#41b9d8, #00adda);
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 0.1rem;
 }
 
 .title {
@@ -96,7 +97,7 @@ footer {
   color: #afafb0;
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 10px;
   width: 90%;
   margin: 0 auto;
 }
@@ -109,12 +110,18 @@ a {
 
 .filters a {
   padding: 0 10px;
+  margin: 3px;
+}
+
+.filters a:hover,
+a:hover {
+  color: #dbdbdb;
 }
 
 .delete-btn {
   color: white;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
   cursor: pointer;
 }
