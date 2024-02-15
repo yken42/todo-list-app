@@ -9,7 +9,7 @@ we devided the tasks between the memebers like so:
 
 ## YAIR
 - UI design
-- - form section with input textarea
+  - form section with input textarea
   - tasks list
   - footer with filtering options
 - remove task on click
