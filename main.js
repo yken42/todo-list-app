@@ -3,13 +3,17 @@ let list = document.querySelector(".todo-list");
 let taskInput = document.querySelector(".task-input");
 const deleteBtn = document.querySelector(".delete-btn");
 
-form.addEventListener("submit", onFormSubmit);
-list.addEventListener("click", removeTask);
+let counter = 0; //tasks counter
+const tasksCounter = document.querySelector("#counter");
+
+init();
 
 function onFormSubmit(event) {
   event.preventDefault();
 
   createItems();
+  counter++;
+  updateTasksCounter(counter);
   taskInput.value = "";
 }
 
@@ -20,9 +24,6 @@ function createItems() {
     let newItem = document.createElement("li");
     newItem.classList.add("item");
 
-    let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-
     let label = document.createElement("label");
     label.textContent = taskInput.value;
 
@@ -30,7 +31,6 @@ function createItems() {
     deleteBtn.innerText = "X";
     deleteBtn.classList.add("delete-btn");
 
-    newItem.appendChild(checkbox);
     newItem.appendChild(label);
     newItem.appendChild(deleteBtn);
 
@@ -42,6 +42,27 @@ function removeTask(e) {
   if (e.target.matches(".delete-btn")) {
     const item = e.target.closest("li");
     item.remove();
+   
   }
-  // console.log("HELO");
+}
+
+function updateTasksCounter(counter) {
+  if (counter == 1) {
+    tasksCounter.textContent = `1 task`;
+  } else {
+    tasksCounter.textContent = `${counter} tasks`;
+  }
+}
+
+//initialize the app
+function init() {
+  list.addEventListener("click", (e) => {
+    if(e.target.tagName === "LI"){
+      e.target.classList.toggle("checked");
+    } else if(e.target.tagName === "SPAN"){
+      e.target.parentElement.remove();
+      counter--;
+      updateTasksCounter(counter);
+    }
+  }, false)
 }

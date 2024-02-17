@@ -9,6 +9,7 @@
   font-family: "Poppins", sans-serif;
 }
 
+
 body {
   min-height: 100vh;
   background: #0c192c;
@@ -46,6 +47,12 @@ animation-duration: calc(125s / var(--i));
   box-shadow: 0 0 0 10px #ff2d7544,
   0 0 50px #ff2d75,
   0 0 100px #ff2d75;
+
+.wrapper {
+  background: linear-gradient(#41b9d8, #00adda);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-top: 0.1rem;
 }
 
 .title {
@@ -113,6 +120,10 @@ hr {
   border: 1px solid #3c424a;
 }
 
+ul li, ul li label{
+  cursor: pointer;
+}
+
 .todo-list {
   padding-top: 1rem;
   width: 80%;
@@ -129,7 +140,7 @@ footer {
   color: #afafb0;
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 10px;
   width: 90%;
   margin: 0 auto;
 }
@@ -142,14 +153,21 @@ a {
 
 .filters a {
   padding: 0 10px;
+  margin: 3px;
+}
+
+.filters a:hover,
+a:hover {
+  color: #dbdbdb;
 }
 
 .delete-btn {
   color: white;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
   cursor: pointer;
+
   
 }
 
@@ -164,3 +182,15 @@ a {
     transform: translateY(-10vh) scale(1);
   }
 }
+=======
+}
+
+#counter {
+  font-weight: bold;
+}
+
+ul li.checked{
+  color: rgb(54, 53, 53);
+  text-decoration: line-through;
+}
+
