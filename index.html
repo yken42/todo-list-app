@@ -5,48 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.scss" />
   </head>
   <body>
-
-    <div class="container">
-      <h1 class="title">Todo List</h1>
-      <form action="">
-        <input type="text" class="task-input" placeholder="Add a task..." />
-        <i class="fa-solid fa-bars"></i>
-      </form>
-      <hr />
-      <ul class="todo-list">
-        <!-- <input type="checkbox" class="unchecked" />
-        <label for="task">${itemText}</label>
-        <span class="delete-btn">X</span> -->
-
-      </ul>
-
-    <div class="wrapper">
-      <div class="container">
-        <h1 class="title">Todo List</h1>
-        <form action="" onsubmit="onFormSubmit(event)">
-          <input type="text" class="task-input" placeholder="Add a task..." />
-          <i class="fa-solid fa-bars"></i>
-        </form>
-        <hr />
-        <ul class="todo-list">
-        </ul>
-
-
-        <footer>
-          <p id="counter">0 tasks</p>
-          <div class="filters">
-            <a href="#">All</a>
-            <a href="#">Active</a>
-            <a href="#">Completed</a>
-          </div>
-          <a href="#">clear completed</a>
-        </footer>
-      </div>
-    </div>
-     <div class="bubblewrap">
+    <div class="bubblewrap">
       <div class="bubbles">
         <span style="--i:11;"></span>
         <span style="--i:12;"></span>
@@ -108,15 +70,32 @@
         <span style="--i:17;"></span>
         <span style="--i:13;"></span>
         <span style="--i:28;"></span>
-        
-        
-
-
       </div>
-     </div>
-    <script type="module" src="/main.js"></script>
-    <script src="/main.js"></script>
+    <div class="container">
+      <h1 class="title">Todo List</h1>
+      <form action="" onsubmit="onFormSubmit(event)">
+        <input type="text" class="task-input" placeholder="Add a task..." />
+        <i class="fa-solid fa-bars"></i>
+      </form>
+      <hr />
+      <ul class="todo-list">
 
+      </ul>
+        <footer>
+          <p id="counter">0 tasks</p>
+          <div class="filters">
+            <a href="#">All</a>
+            <a href="#">Active</a>
+            <a href="#">Completed</a>
+          </div>
+          <a href="#">clear completed</a>
+        </footer>
+      
+    </div>
+  </div>
+</div>
+     
+    <script src="/main.js"></script>
     <script
       src="https://kit.fontawesome.com/a3ef6dc515.js"
       crossorigin="anonymous"

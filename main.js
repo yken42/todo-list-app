@@ -42,7 +42,6 @@ function removeTask(e) {
   if (e.target.matches(".delete-btn")) {
     const item = e.target.closest("li");
     item.remove();
-   
   }
 }
 
@@ -56,13 +55,17 @@ function updateTasksCounter(counter) {
 
 //initialize the app
 function init() {
-  list.addEventListener("click", (e) => {
-    if(e.target.tagName === "LI"){
-      e.target.classList.toggle("checked");
-    } else if(e.target.tagName === "SPAN"){
-      e.target.parentElement.remove();
-      counter--;
-      updateTasksCounter(counter);
-    }
-  }, false)
+  list.addEventListener(
+    "click",
+    (e) => {
+      if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+      } else if (e.target.tagName === "SPAN") {
+        e.target.parentElement.remove();
+        counter--;
+        updateTasksCounter(counter);
+      }
+    },
+    false
+  );
 }
