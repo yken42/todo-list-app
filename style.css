@@ -81,6 +81,10 @@ hr {
   border: 1px solid #3c424a;
 }
 
+ul li, ul li label{
+  cursor: pointer;
+}
+
 .todo-list {
   padding-top: 1rem;
   width: 80%;
@@ -124,4 +128,13 @@ a:hover {
 
 .delete-btn:hover {
   cursor: pointer;
+}
+
+#counter {
+  font-weight: bold;
+}
+
+ul li.checked{
+  color: rgb(54, 53, 53);
+  text-decoration: line-through;
 }
