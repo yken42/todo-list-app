@@ -66,7 +66,14 @@ function init() {
       if (e.target.tagName === "LI") {
         const taskId = e.target.id;
         const taskIndex = todos.findIndex((task) => task.id === taskId);
-        // console.log(taskIndex);
+        if (taskIndex !== -1) {
+          todos[taskIndex].completed = !todos[taskIndex].completed;
+        }
+        render();
+      } else if (e.target.tagName === "LABEL") {
+        e.stopPropagation();
+        const taskId = e.target.parentElement.id;
+        const taskIndex = todos.findIndex((task) => task.id === taskId);
         if (taskIndex !== -1) {
           todos[taskIndex].completed = !todos[taskIndex].completed;
         }
@@ -87,29 +94,24 @@ function filterTasks(status) {
     if (status === "completed") {
       return task.completed;
     }
-    if(status === "active"){
+    if (status === "active") {
       return !task.completed;
     }
-    if(status === 'all'){
+    if (status === "all") {
       return true;
     }
-   
   });
-
 
   renderCompleted(completedItems);
 }
 function renderCompleted(completedItems) {
-  list.innerHTML = ''
+  list.innerHTML = "";
   completedItems.forEach((task) => {
     list.innerHTML += `<li class="item" id="${task.id}">
-     <label for="check" class="${task.completed ? "checked" : "" }"> ${
-      task.task}</label> 
+     <label for="check" class="${task.completed ? "checked" : ""}">${task.task}</label> 
      <span class="delete-btn">X</span>
    </li>`;
   });
- 
-  
+
+  updateTasksCounter(completedItems.length);
 }
-
-
