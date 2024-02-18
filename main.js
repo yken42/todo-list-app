@@ -115,3 +115,7 @@ function renderCompleted(completedItems) {
 
   updateTasksCounter(completedItems.length);
 }
+function filterTasks() {
+  todos = todos.filter(todo => !todo.completed);
+  render();
+}
