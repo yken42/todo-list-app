@@ -71,9 +71,7 @@ function init() {
           todos[taskIndex].completed = !todos[taskIndex].completed;
         }
         render();
-      }
-
-      else if (e.target.tagName === "SPAN") {
+      } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
         counter--;
         updateTasksCounter(counter);
@@ -84,3 +82,34 @@ function init() {
     false
   );
 }
+function filterTasks(status) {
+  let completedItems = todos.filter((task) => {
+    if (status === "completed") {
+      return task.completed;
+    }
+    if(status === "active"){
+      return !task.completed;
+    }
+    if(status === 'all'){
+      return true;
+    }
+   
+  });
+
+
+  renderCompleted(completedItems);
+}
+function renderCompleted(completedItems) {
+  list.innerHTML = ''
+  completedItems.forEach((task) => {
+    list.innerHTML += `<li class="item" id="${task.id}">
+     <label for="check" class="${task.completed ? "checked" : "" }"> ${
+      task.task}</label> 
+     <span class="delete-btn">X</span>
+   </li>`;
+  });
+ 
+  
+}
+
+
