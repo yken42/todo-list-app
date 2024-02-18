@@ -46,10 +46,6 @@ function render() {
   list.innerHTML = markup;
 }
 
-// function removeTask(id) {
-//   todos = todos.filter((task) => task.id !== id);
-//   createItems();
-// }
 
 function updateTasksCounter(counter) {
   if (counter == 1) {
@@ -61,12 +57,19 @@ function updateTasksCounter(counter) {
 
 //initialize the app
 function init() {
+  render();
   form.addEventListener("submit", onFormSubmit);
   list.addEventListener(
     "click",
     (e) => {
       if (e.target.tagName === "LI") {
-        e.target.classList.toggle("checked");
+        const taskId = e.target.id;
+        const taskIndex = todos.findIndex((task) => task.id === taskId);
+        // console.log(taskIndex);
+        if (taskIndex !== -1) {
+          todos[taskIndex].completed = !todos[taskIndex].completed;
+        }
+        render();
       } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
         counter--;
