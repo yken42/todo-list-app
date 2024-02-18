@@ -6,44 +6,50 @@ const deleteBtn = document.querySelector(".delete-btn");
 let counter = 0; //tasks counter
 const tasksCounter = document.querySelector("#counter");
 
+const genID = () => Math.random().toString(36).slice(2, 8);
+
+let todos = [];
+
 init();
 
 function onFormSubmit(event) {
   event.preventDefault();
 
-  createItems();
-  counter++;
-  updateTasksCounter(counter);
+  if (taskInput.value != "") {
+    todos.push({
+      id: genID(),
+      task: taskInput.value,
+      completed: false,
+    });
+    counter++;
+    updateTasksCounter(counter);
+  } else {
+    alert("This space requires an input, can not leave it blank");
+  }
+  render();
   taskInput.value = "";
 }
 
-function createItems() {
-  if (taskInput.value === "") {
-    alert("This space requires an input, can not leave it blank");
-  } else {
-    let newItem = document.createElement("li");
-    newItem.classList.add("item");
-
-    let label = document.createElement("label");
-    label.textContent = taskInput.value;
-
-    let deleteBtn = document.createElement("span");
-    deleteBtn.innerText = "X";
-    deleteBtn.classList.add("delete-btn");
-
-    newItem.appendChild(label);
-    newItem.appendChild(deleteBtn);
-
-    list.appendChild(newItem);
+function render() {
+  let markup = "";
+  for (let todo of todos) {
+    markup += `
+      <li class="item" id="${todo.id}">
+        <input type="checkbox" class="checked" ${
+          todo.completed ? "checked" : ""
+        }>
+        <label for="check">${todo.task}</label> 
+        <span class="delete-btn">X</span>
+      </li>`;
   }
+
+  list.innerHTML = markup;
 }
 
-function removeTask(e) {
-  if (e.target.matches(".delete-btn")) {
-    const item = e.target.closest("li");
-    item.remove();
-  }
-}
+// function removeTask(id) {
+//   todos = todos.filter((task) => task.id !== id);
+//   createItems();
+// }
 
 function updateTasksCounter(counter) {
   if (counter == 1) {
@@ -55,6 +61,7 @@ function updateTasksCounter(counter) {
 
 //initialize the app
 function init() {
+  form.addEventListener("submit", onFormSubmit);
   list.addEventListener(
     "click",
     (e) => {
@@ -64,6 +71,8 @@ function init() {
         e.target.parentElement.remove();
         counter--;
         updateTasksCounter(counter);
+        todos = todos.filter((task) => task.id !== e.target.parentElement.id);
+        render();
       }
     },
     false
