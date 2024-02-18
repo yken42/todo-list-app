@@ -177,7 +177,11 @@ body {
   font-weight: bold;
 }
 
-ul li.checked {
+.checked {
   color: rgb(54, 53, 53);
   text-decoration: line-through;
+}
+
+.box-checked{
+  display: none;
 }

@@ -35,17 +35,18 @@ function render() {
   for (let todo of todos) {
     markup += `
       <li class="item" id="${todo.id}">
-        <input type="checkbox" class="checked" ${
+        <input type="checkbox" class="box-checked" ${
           todo.completed ? "checked" : ""
         }>
-        <label for="check">${todo.task}</label> 
+        <label for="check" class="${todo.completed ? "checked" : ""}">${
+      todo.task
+    }</label> 
         <span class="delete-btn">X</span>
       </li>`;
   }
 
   list.innerHTML = markup;
 }
-
 
 function updateTasksCounter(counter) {
   if (counter == 1) {
@@ -70,7 +71,9 @@ function init() {
           todos[taskIndex].completed = !todos[taskIndex].completed;
         }
         render();
-      } else if (e.target.tagName === "SPAN") {
+      }
+
+      else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
         counter--;
         updateTasksCounter(counter);
